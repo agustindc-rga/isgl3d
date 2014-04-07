@@ -324,6 +324,11 @@
 	return node;
 }
 
+- (NSDictionary *) meshNodesByName
+{
+  return _meshNodes;
+}
+
 - (Isgl3dGLMesh *)meshFromNodeWithName:(NSString *)nodeName {
 	Isgl3dMeshNode * meshNode = [self meshNodeWithName:nodeName];
 	if (meshNode) {

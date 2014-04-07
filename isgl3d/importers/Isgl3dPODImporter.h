@@ -168,6 +168,12 @@
 - (Isgl3dMeshNode *) meshNodeWithName:(NSString *)nodeName;
 
 /**
+ * Returns all Isgl3dMeshNodes indexed by their names (as defined in the POD file).
+ * @return A Dictionary with Isgl3dMeshNodes as values and their names as keys.
+ */
+- (NSDictionary *) meshNodesByName;
+
+/**
  * Returns the Isgl3dMaterial corresponding to a material name (as defined in the POD file).
  * All material names can be obtained via printPODInfo.
  * @param materialName the name of the material as defined in the POD file.
