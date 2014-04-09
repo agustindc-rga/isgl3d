@@ -105,6 +105,9 @@
 	BOOL _isVisible;
 	
 	BOOL _isRunning;
+  
+  NSString *_name;
+  NSInteger _tag;
 	
 @private
 
@@ -167,9 +170,6 @@
  * The scale of the object in the z direction
  */
 @property (nonatomic) float scaleZ;
-
-
-
 
 /**
  * The children of this node. Returns an NSArray of Isgl3dNodes.
@@ -247,6 +247,16 @@
  * Note: this affects all child nodes too.
  */
 @property (nonatomic) BOOL isVisible;
+
+/**
+ * A string that can be used to identify node objects in your scene. By default this is nil.
+ */
+@property (nonatomic, retain) NSString *name;
+
+/**
+ * An integer that can be used to identify node objects in your scene. By default this is 0.
+ */
+@property (nonatomic) NSInteger tag;
 
 /**
  * The gesture recognizers currently attached to this node.

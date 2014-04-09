@@ -65,6 +65,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 @synthesize alphaCullValue = _alphaCullValue;
 @synthesize interactive = _interactive;
 @synthesize isVisible = _isVisible;
+@synthesize name = _name;
+@synthesize tag = _tag;
 
 + (id)node {
 	return [[[self alloc] init] autorelease];
