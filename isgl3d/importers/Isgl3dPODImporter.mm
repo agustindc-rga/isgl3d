@@ -625,15 +625,15 @@
 		Isgl3dMeshNode * node;
 		if (meshInfo.sBoneIdx.pData && meshInfo.sBoneWeight.pData) {
 			node = [self createAnimatedMeshNode:i meshId:meshNodeInfo.nIdx mesh:mesh material:material];
-			[_meshNodes setObject:node forKey:[NSString stringWithUTF8String:meshNodeInfo.pszName]];
-		
+			
 		} else {
 		
 			Isgl3dClassDebugLog(Isgl3dLogLevelDebug, @"Bulding mesh node: %s:", meshNodeInfo.pszName);
 			node = [Isgl3dMeshNode nodeWithMesh:mesh andMaterial:material];
-			[_meshNodes setObject:node forKey:[NSString stringWithUTF8String:meshNodeInfo.pszName]];
-		}			
-
+			node.name = [NSString stringWithUTF8String:meshNodeInfo.pszName];
+		}
+		
+		[_meshNodes setObject:node forKey:node.name];
 		[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:meshNodeInfo.nIdx]];
 
         if (material != nil) {
@@ -662,6 +662,8 @@
 		// See if node already exists as a mesh node, otherise create simple node
 		if (![_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdx]]) {
 			Isgl3dNode *node = [Isgl3dNode node];
+			node.name = [NSString stringWithUTF8String:nodeInfo.pszName];
+			
 			[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:nodeInfo.nIdx]];
 		}
 		
@@ -729,6 +731,7 @@
 	
 	// Create new animted mesh node with default mesh and material
 	Isgl3dAnimatedMeshNode * animatedMeshNode = [Isgl3dAnimatedMeshNode nodeWithMesh:mesh andMaterial:material];
+	animatedMeshNode.name = [NSString stringWithUTF8String:meshNodeInfo.pszName];
 	
 	[animatedMeshNode setNumberOfBonesPerVertex:meshInfo.sBoneIdx.n];
 	
@@ -825,8 +828,9 @@
 	Isgl3dClassDebugLog(Isgl3dLogLevelDebug, @"Building bone %s (%i)", nodeInfo.pszName, nodeId);
 
 	boneNode = [Isgl3dBoneNode boneNode];
+	boneNode.name = [NSString stringWithUTF8String:nodeInfo.pszName];
 	[_indexedNodes setObject:boneNode forKey:[NSNumber numberWithInteger:nodeId]];
-	[_boneNodes setObject:boneNode forKey:[NSString stringWithUTF8String:nodeInfo.pszName]];
+	[_boneNodes setObject:boneNode forKey:boneNode.name];
 
 	// Set the default transformation
 	_podModel->SetFrame(0);
