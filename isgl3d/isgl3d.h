@@ -28,7 +28,7 @@
 extern "C" {
 #endif
 
-extern NSString const* isgl3dVersion();
+extern NSString *const isgl3dVersion();
 
 #ifdef __cplusplus
 }
