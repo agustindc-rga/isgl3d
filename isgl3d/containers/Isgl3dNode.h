@@ -490,6 +490,18 @@
 - (void)removeFromParent;
 
 /**
+ * Finds the first child node with the given name.
+ * @param name The name to search for.
+ */
+- (Isgl3dNode *)childWithName:(NSString*)name;
+
+/**
+ * Finds the first child node with the given tag.
+ * @param tag The tag to search for.
+ */
+- (Isgl3dNode *)childWithTag:(NSInteger)tag;
+
+/**
  * Activates the node and all its children. Called when a view is made active or a child is added to an already active node.
  * Note : This is called internally by iSGL3D and should not be called manually. Any code that needs to
  * be handled when the node is activated should be added in "onActivated".

@@ -559,6 +559,22 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[_parent removeChild:self];
 }
 
+- (Isgl3dNode *)childWithName:(NSString*)name {
+  for (Isgl3dNode *child in _children) {
+    if ([child.name isEqual:name])
+      return child;
+  }
+  return nil;
+}
+
+- (Isgl3dNode *)childWithTag:(NSInteger)tag {
+  for (Isgl3dNode *child in _children) {
+    if (child.tag == tag)
+      return child;
+  }
+  return nil;
+}
+
 - (void)activate {
 	_isRunning = YES;
 	for (Isgl3dNode * child in _children) {
