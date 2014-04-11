@@ -94,7 +94,7 @@
 							fsPreProcHeader:fragmentShaderPreProcessorHeader])) {
 		
 		_shaderType = Isgl3dCustomShaderTrianglesType;
-		_key = key;
+		_key = [key retain];
 
 		_lights = [[NSMutableArray alloc] init];
 
@@ -107,6 +107,7 @@
 
 - (void)dealloc {
 	[_lights release];
+	[_key release];
 
 	[super dealloc];
 }
